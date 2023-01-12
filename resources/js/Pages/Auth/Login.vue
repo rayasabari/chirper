@@ -6,9 +6,11 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import axios from 'axios';
 
 import { useI18n } from "vue-i18n";
 const { t, locale } = useI18n({});
+
 
 defineProps({
     canResetPassword: Boolean,
@@ -20,6 +22,14 @@ const form = useForm({
     password: '',
     remember: false,
 });
+
+const switchLocale = (val) => {
+    locale.value = val
+    axios.post('/api/switch/lang/' + val, { preserveState: true })
+        .then(res => {
+            console.log(res.data.data);
+        })
+}
 
 const submit = () => {
     form.post(route('login'), {
@@ -43,7 +53,7 @@ const submit = () => {
 
                 <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError v-if="form.errors.email" class="mt-2" :message="t('auth.failed')" />
             </div>
 
             <div class="mt-4">
@@ -72,8 +82,8 @@ const submit = () => {
                 </PrimaryButton>
             </div>
             <div>
-                <button type="button" @click="locale = 'ja'" class="p-1" :class="locale == 'ja' ? 'bg-gray-100' : ''">JA</button>
-                <button type="button" @click="locale = 'en'" class="p-1" :class="locale.includes('en') ? 'bg-gray-100' : ''">EN</button>
+                <button type="button" @click="switchLocale('ja')" class="p-1" :class="locale == 'ja' ? 'bg-gray-100' : ''">JA</button>
+                <button type="button" @click="switchLocale('en')" class="p-1" :class="locale.includes('en') ? 'bg-gray-100' : ''">EN</button>
             </div>
         </form>
     </GuestLayout>
