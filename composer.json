@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.7",
         "librenms/laravel-vue-i18n-generator": "^0.1.48",
+        "mikehaertl/php-pdftk": "^0.13.0",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

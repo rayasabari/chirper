@@ -4,6 +4,7 @@ import { Head } from "@inertiajs/inertia-vue3";
 import html2pdf from "html2pdf.js";
 import { reactive, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
+import axios from "axios";
 const { t } = useI18n({});
 
 const state = reactive({
@@ -25,10 +26,23 @@ const exportToPDF = () => {
   });
 };
 
-const { firstName, bio, ...rest } = toRefs(state);
+const onSUbmit = async () => {
+  try {
+    let response = await axios.post('/api/getpdf', {
+      firstName: firstName.value,
+      email: email.value
+    })
+    console.log(response.data.data);
+  } catch (error) {
+    console.log(error.response.data.message);
+  }
+}
+
+const { firstName, email, bio, ...rest } = toRefs(state);
 </script>
 
 <template>
+
   <Head title="Dashboard" />
 
   <AuthenticatedLayout>
@@ -45,21 +59,31 @@ const { firstName, bio, ...rest } = toRefs(state);
             {{ $page.props.auth.user.name }}
             {{ t("dashboard.welcome") }}
             <div class="mt-4">
-              <button
-                type="button"
-                class="px-4 py-1 text-white bg-blue-600 rounded"
-                @click="exportToPDF"
-              >
+              <button type="button" class="px-4 py-1 text-white bg-blue-600 rounded" @click="exportToPDF">
                 Export PDF
               </button>
             </div>
-            <div id="element-to-convert" class="p-10 mt-10">
+            <div id="element-to-convert" class="p-10 mt-10 border rounded">
               <h1 class="font-semibold text-rose-500">Example Export Content</h1>
               <div>
                 {{ $page.props.auth.user.name }}
                 {{ t("dashboard.welcome") }}
+                {{}}
               </div>
             </div>
+            <form @submit.prevent="onSUbmit">
+              <div class="my-2 flex w-4/12 justify-between items-center">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" v-model="firstName">
+              </div>
+              <div class="my-2 flex w-4/12 justify-between items-center">
+                <label for="email">Email</label>
+                <input type="email" id="email" v-model="email">
+              </div>
+              <div>
+                <button type="submit" class="px-5 py-2 bg-blue-500 rounded-lg text-white">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
