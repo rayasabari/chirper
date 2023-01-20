@@ -9,6 +9,7 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 import { createI18n } from "vue-i18n";
 import localeMessages from "./vue-i18n-locales.generated";
+import { createPinia } from 'pinia';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -25,6 +26,7 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(i18n)
+            .use(createPinia())
             .use(ZiggyVue, Ziggy)
             .mount(el);
     },

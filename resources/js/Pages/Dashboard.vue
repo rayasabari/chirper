@@ -6,6 +6,7 @@ import { reactive, toRefs } from "vue";
 import { useI18n } from "vue-i18n";
 import axios from "axios";
 const { t } = useI18n({});
+import { useCounterStore } from "@/store/CounterStore";
 
 const state = reactive({
   firstName: "John",
@@ -38,6 +39,8 @@ const onSUbmit = async () => {
   }
 }
 
+let counter = useCounterStore();
+
 const { firstName, email, bio, ...rest } = toRefs(state);
 </script>
 
@@ -58,6 +61,11 @@ const { firstName, email, bio, ...rest } = toRefs(state);
           <div class="p-6 text-gray-900">
             {{ $page.props.auth.user.name }}
             {{ t("dashboard.welcome") }}
+            <div class="flex gap-6 p-8 my-8 border rounded-xl">
+              <button @click="counter.decrease()" class="px-5 py-2 text-white bg-blue-500 rounded-lg">-</button>
+              <div class="text-4xl font-bold">{{ counter.count }}</div>
+              <button @click="counter.increase()" class="px-5 py-2 text-white bg-blue-500 rounded-lg">+</button>
+            </div>
             <div class="mt-4">
               <button type="button" class="px-4 py-1 text-white bg-blue-600 rounded" @click="exportToPDF">
                 Export PDF
@@ -68,20 +76,19 @@ const { firstName, email, bio, ...rest } = toRefs(state);
               <div>
                 {{ $page.props.auth.user.name }}
                 {{ t("dashboard.welcome") }}
-                {{}}
               </div>
             </div>
             <form @submit.prevent="onSUbmit">
-              <div class="my-2 flex w-4/12 justify-between items-center">
+              <div class="flex items-center justify-between w-4/12 my-2">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" v-model="firstName">
               </div>
-              <div class="my-2 flex w-4/12 justify-between items-center">
+              <div class="flex items-center justify-between w-4/12 my-2">
                 <label for="email">Email</label>
                 <input type="email" id="email" v-model="email">
               </div>
               <div>
-                <button type="submit" class="px-5 py-2 bg-blue-500 rounded-lg text-white">Submit</button>
+                <button type="submit" class="px-5 py-2 text-white bg-blue-500 rounded-lg">Submit</button>
               </div>
             </form>
           </div>
