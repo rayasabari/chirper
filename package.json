@@ -20,6 +20,8 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
+        "@headlessui/vue": "^1.7.7",
+        "@heroicons/vue": "^2.0.13",
         "dayjs": "^1.11.7",
         "html2pdf.js": "^0.10.1",
         "pinia": "^2.0.29",

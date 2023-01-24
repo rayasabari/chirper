@@ -29,10 +29,10 @@ Route::post('/getpdf', function (Request $request) {
             'name_field' => $request->firstName,
             'email_field' => $request->email
         ];
-        $pdf = new PDF(public_path().'/test.pdf');
+        $pdf = new PDF(public_path() . '/test.pdf');
         $pdf->fillForm($data)
-        ->flatten()
-        ->saveAs(public_path().'/completed/hasil.pdf');
+            ->flatten()
+            ->saveAs(public_path() . '/completed/hasil.pdf');
     } catch (\Throwable $th) {
         return response()->json([
             'message' => $th->getMessage(),
