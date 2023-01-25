@@ -3,7 +3,7 @@ name: chirper-cd
 env:
   "S3_BUCKET_NAME": "chirper-test-deploy"
   "EBS_APPLICATION_NAME": "chirper-test"
-  "EBS_ENVIRONTMENT_NAME": "Chirpertest-env"
+  "EBS_ENVIRONMENT_NAME": "Chirpertest-env"
   "AWS_REGION": "ap-northeast-1"
   "DEPLOY_PACKAGE_NAME": "chirper-app-${{github.sha}}.zip"
 
