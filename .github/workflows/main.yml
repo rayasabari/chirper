@@ -22,6 +22,12 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
         
+      - name: Install Dependencies
+        run: composer install --no-dev --prefer-dist
+      
+      - name: Generate key
+        run: php artisan key:generate
+        
       - name: Zip the repository
         run: zip -r ${{env.DEPLOY_PACKAGE_NAME}} ./ -x *.git*
     
