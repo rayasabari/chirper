@@ -18,7 +18,10 @@ jobs:
     steps:
       - name: Clone the repository
         uses: actions/checkout@v3
-    
+        
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+        
       - name: Zip the repository
         run: zip -r ${{env.DEPLOY_PACKAGE_NAME}} ./ -x *.git*
     
