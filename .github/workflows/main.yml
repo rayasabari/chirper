@@ -23,12 +23,12 @@ jobs:
       run: zip -r ${{env.DEPLOY_PACKAGE_NAME}} ./ -x *.git*
     
     - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          node-version: 16
-          aws-access-key-id: ${{secrets.ACCESS_KEY_ID}}
-          aws-secret-access-key: ${{secrets.SECRET_ACCESS_KEY}}
-          aws-region: ${{env.AWS_REGION}}
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        node-version: 16
+        aws-access-key-id: ${{secrets.ACCESS_KEY_ID}}
+        aws-secret-access-key: ${{secrets.SECRET_ACCESS_KEY}}
+        aws-region: ${{env.AWS_REGION}}
           
     - name: Upload Deployment to S3 Bucket
       run: aws s3 cp ${{env.DEPLOY_PACKAGE_NAME}} s3://${{env.S3_BUCKET_NAME}}/
