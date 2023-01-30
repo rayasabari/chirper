@@ -1,5 +1,6 @@
 <?php
 return [
   'dashboard' => 'ダッシュボード',
-  'chirps' => 'チャープ'
+  'chirps' => 'チャープ',
+  'checker' => 'チェッカー',
 ];

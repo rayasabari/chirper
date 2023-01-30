@@ -18,7 +18,8 @@ export default {
         },
         "navigation": {
             "dashboard": "Dashboard",
-            "chirps": "Chirps"
+            "chirps": "Chirps",
+            "checker": "Checker"
         }
     },
     "ja": {
@@ -40,7 +41,8 @@ export default {
         },
         "navigation": {
             "dashboard": "ダッシュボード",
-            "chirps": "チャープ"
+            "chirps": "チャープ",
+            "checker": "チェッカー"
         }
     }
 }

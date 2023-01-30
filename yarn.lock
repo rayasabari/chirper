@@ -14,10 +14,10 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@esbuild/linux-x64@0.16.13":
+"@esbuild/linux-arm64@0.16.13":
   version "0.16.13"
-  resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.16.13.tgz"
-  integrity sha512-S4wn2BimuhPcoArRtVrdHUKIymCCZcYAXQE47kUiX4yrUrEX2/ifn5eKNbZ5c1jJKUlh1gC2ESIN+iw3wQax3g==
+  resolved "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.16.13.tgz"
+  integrity sha512-qi5n7KwcGViyJeZeQnu8fB6dC3Mlm5PGaqSv2HhQDDx/MPvVfQGNMcv7zcBL4qk3FkuWhGVwXkjQ76x7R0PWlA==
 
 "@headlessui/vue@^1.7.7":
   version "1.7.7"

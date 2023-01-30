@@ -40,6 +40,9 @@ const showingNavigationDropdown = ref(false);
               <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')">
                 {{ t('navigation.chirps') }}
               </NavLink>
+              <NavLink :href="route('checker.index')" :active="route().current('checker.index')">
+                {{ t('navigation.checker') }}
+              </NavLink>
             </div>
           </nav>
         </div>
