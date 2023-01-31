@@ -11,10 +11,6 @@ import { useCounterStore } from '@/store/CounterStore';
 import { useI18n } from "vue-i18n";
 const { t, locale } = useI18n({});
 
-onMounted(() => {
-  console.log(locale.value);
-})
-
 let counter = useCounterStore();
 
 const showingNavigationDropdown = ref(false);
