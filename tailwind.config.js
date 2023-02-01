@@ -9,6 +9,12 @@ module.exports = {
         './resources/js/**/*.vue',
     ],
 
+    safelist: [
+        'text-indigo-400',
+        'border-indigo-400',
+        'border-gray-900',
+    ],
+
     theme: {
         extend: {
             fontFamily: {
