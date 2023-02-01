@@ -20,6 +20,16 @@ export default {
             "dashboard": "Dashboard",
             "chirps": "Chirps",
             "checker": "Checker"
+        },
+        "questions": {
+            "basic-type": {
+                "title": "Please select whether you are a corporation or sole proprietorship.",
+                "description": "",
+                "options": {
+                    "title_1": "Corporation",
+                    "title_2": "Sole proprietorship"
+                }
+            }
         }
     },
     "ja": {
@@ -43,6 +53,16 @@ export default {
             "dashboard": "ダッシュボード",
             "chirps": "チャープ",
             "checker": "チェッカー"
+        },
+        "questions": {
+            "basic-type": {
+                "title": "法人か個人事業主かをご選択ください。",
+                "description": "",
+                "options": {
+                    "title_1": "法人",
+                    "title_2": "個人事業主"
+                }
+            }
         }
     }
 }
